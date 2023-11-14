@@ -7,7 +7,7 @@ Automation of bruteforce ActiveSync/ldap (can be adapted to any one if desired) 
 The scripts have built-in bots for the eXpress messenger (not popular, replace with the one you need)
 
 ```bash
-start_activesync.py - main script, there is also a version for testing via ldap (from the internal network) - start_ldap.py
+start_activesync.py - main script, there is also a version for testing via ldap - start_ldap.py
 bot.py - bot for sending results for the current night
 end_of_scan.py, bot2.py - sending final results
 ```
